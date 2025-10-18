@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notepad/features/editor/presentation/pages/editor_page.dart';
+import 'package:provider/provider.dart';
+import 'package:notepad/features/editor/presentation/pages/tabbed_editor_page.dart';
+import 'package:notepad/features/editor/presentation/providers/tab_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,16 +12,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.light,
+    return ChangeNotifierProvider(
+      create: (context) => TabProvider(),
+      child: MaterialApp(
+        title: 'Notepad',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+            brightness: Brightness.light,
+          ),
         ),
-      ),
-      home: EditorScreen(
-        isDarkMode: Theme.of(context).brightness == Brightness.dark,
+        darkTheme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+            brightness: Brightness.dark,
+          ),
+        ),
+        themeMode: ThemeMode.system,
+        home: const TabbedEditorPage(),
       ),
     );
   }
