@@ -22,30 +22,30 @@ class TabBarWidget extends StatelessWidget {
           height: 40,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surface,
-            border: Border(
-              bottom: BorderSide(
-                color: Theme.of(context).dividerColor,
-                width: 1,
-              ),
-            ),
           ),
           child: Row(
             children: [
               Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: tabs.length,
-                  itemBuilder: (context, index) {
-                    final tab = tabs[index];
-                    final isActive = activeTab?.id == tab.id;
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tabs.length,
+                    itemBuilder: (context, index) {
+                      final tab = tabs[index];
+                      final isActive = activeTab?.id == tab.id;
 
-                    return _TabItem(
-                      tab: tab,
-                      isActive: isActive,
-                      onTap: () => tabProvider.switchToTab(tab.id),
-                      onClose: () => tabProvider.closeTab(tab.id),
-                    );
-                  },
+                      return _TabItem(
+                        tab: tab,
+                        isActive: isActive,
+                        onTap: () => tabProvider.switchToTab(tab.id),
+                        onClose: () => tabProvider.closeTab(tab.id),
+                      );
+                    },
+                  ),
                 ),
               ),
               // Add new tab button
@@ -87,12 +87,8 @@ class _TabItem extends StatelessWidget {
       child: Container(
         constraints: const BoxConstraints(minWidth: 120, maxWidth: 200),
         decoration: BoxDecoration(
-          color: isActive
-              ? colorScheme.surface
-              : colorScheme.surface.withValues(alpha: 0.7),
-          border: Border(
-            right: BorderSide(color: theme.dividerColor, width: 1),
-          ),
+          borderRadius: BorderRadius.circular(10),
+          color: isActive ? colorScheme.primary : colorScheme.surface,
         ),
         child: Row(
           children: [

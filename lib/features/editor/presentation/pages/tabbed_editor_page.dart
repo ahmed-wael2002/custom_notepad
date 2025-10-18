@@ -56,13 +56,6 @@ class _TabbedEditorPageState extends State<TabbedEditorPage> {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Provider.of<TabProvider>(context, listen: false).createTab();
-          },
-          tooltip: 'New Tab (Ctrl+T)',
-          child: const Icon(Icons.add),
-        ),
       ),
     );
   }
