@@ -30,14 +30,6 @@ class _TabbedEditorPageState extends State<TabbedEditorPage> {
             Expanded(
               child: Consumer<TabProvider>(
                 builder: (context, tabProvider, child) {
-                  // Create a tab if none exists
-                  if (tabProvider.tabs.isEmpty) {
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      tabProvider.createTab();
-                    });
-                    return const Center(child: Text('Creating first tab...'));
-                  }
-
                   final activeTab = tabProvider.activeTab;
 
                   if (activeTab == null) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:notepad/features/editor/presentation/pages/tabbed_editor_page.dart';
+import 'package:notepad/features/editor/presentation/controllers/app_controller.dart';
 import 'package:notepad/features/editor/presentation/providers/tab_provider.dart';
 
 void main() {
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         themeMode: ThemeMode.system,
-        home: const TabbedEditorPage(),
+        home: const AppController(),
       ),
     );
   }
