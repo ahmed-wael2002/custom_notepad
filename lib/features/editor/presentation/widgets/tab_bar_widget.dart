@@ -103,9 +103,7 @@ class _TabItem extends StatelessWidget {
                   '${tab.title}${tab.isModified ? ' *' : ''}',
                   style: TextStyle(
                     fontSize: 13,
-                    color: isActive
-                        ? colorScheme.onSurface
-                        : colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: isActive ? Colors.black : colorScheme.onSurface,
                     fontWeight: isActive ? FontWeight.w500 : FontWeight.normal,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -118,7 +116,13 @@ class _TabItem extends StatelessWidget {
                 return tab.id != 'tab_1' || tabProvider.tabs.length > 1
                     ? IconButton(
                         onPressed: onClose,
-                        icon: const Icon(Icons.close, size: 16),
+                        icon: Icon(
+                          Icons.close,
+                          size: 16,
+                          color: isActive
+                              ? Colors.black
+                              : colorScheme.onSurface,
+                        ),
                         constraints: const BoxConstraints(
                           minWidth: 24,
                           minHeight: 24,

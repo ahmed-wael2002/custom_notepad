@@ -18,13 +18,13 @@ class MyApp extends StatelessWidget {
         title: 'Notepad',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.blue,
+            seedColor: Colors.teal,
             brightness: Brightness.light,
           ),
         ),
         darkTheme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.blue,
+            seedColor: Colors.teal,
             brightness: Brightness.dark,
           ),
         ),

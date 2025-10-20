@@ -28,6 +28,12 @@ class KeyboardShortcutHandler extends StatelessWidget {
           LogicalKeyboardKey.shift,
           LogicalKeyboardKey.tab,
         ): _PreviousTabIntent(),
+        // Ctrl+S for save file
+        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyS):
+            _SaveFileIntent(),
+        // Ctrl+O for open file
+        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyO):
+            _OpenFileIntent(),
       },
       child: Actions(
         actions: {
@@ -42,6 +48,12 @@ class KeyboardShortcutHandler extends StatelessWidget {
           ),
           _PreviousTabIntent: CallbackAction<_PreviousTabIntent>(
             onInvoke: (_) => _handlePreviousTab(context),
+          ),
+          _SaveFileIntent: CallbackAction<_SaveFileIntent>(
+            onInvoke: (_) => _handleSaveFile(context),
+          ),
+          _OpenFileIntent: CallbackAction<_OpenFileIntent>(
+            onInvoke: (_) => _handleOpenFile(context),
           ),
         },
         child: Focus(autofocus: true, child: child),
@@ -85,6 +97,40 @@ class KeyboardShortcutHandler extends StatelessWidget {
       tabProvider.switchToTab(tabs[previousIndex].id);
     }
   }
+
+  void _handleSaveFile(BuildContext context) async {
+    final tabProvider = Provider.of<TabProvider>(context, listen: false);
+    final success = await tabProvider.saveCurrentTab();
+
+    if (success) {
+      // Show success feedback
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('File saved successfully')));
+    } else {
+      // Show error feedback
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Failed to save file')));
+    }
+  }
+
+  void _handleOpenFile(BuildContext context) async {
+    final tabProvider = Provider.of<TabProvider>(context, listen: false);
+    final success = await tabProvider.openFile();
+
+    if (success) {
+      // Show success feedback
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('File opened successfully')));
+    } else {
+      // Show error feedback
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Failed to open file')));
+    }
+  }
 }
 
 // Intent classes for keyboard shortcuts
@@ -102,4 +148,12 @@ class _NextTabIntent extends Intent {
 
 class _PreviousTabIntent extends Intent {
   const _PreviousTabIntent();
+}
+
+class _SaveFileIntent extends Intent {
+  const _SaveFileIntent();
+}
+
+class _OpenFileIntent extends Intent {
+  const _OpenFileIntent();
 }

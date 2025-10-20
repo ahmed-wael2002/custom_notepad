@@ -1,4 +1,5 @@
 import 'package:super_editor/super_editor.dart';
+import 'file_entity.dart';
 
 /// Represents a single tab in the editor
 class TabEntity {
@@ -8,6 +9,7 @@ class TabEntity {
   final bool isModified;
   final DateTime createdAt;
   final DateTime lastModified;
+  final FileEntity? file;
 
   const TabEntity({
     required this.id,
@@ -16,6 +18,7 @@ class TabEntity {
     this.isModified = false,
     required this.createdAt,
     required this.lastModified,
+    this.file,
   });
 
   TabEntity copyWith({
@@ -25,6 +28,7 @@ class TabEntity {
     bool? isModified,
     DateTime? createdAt,
     DateTime? lastModified,
+    FileEntity? file,
   }) {
     return TabEntity(
       id: id ?? this.id,
@@ -33,6 +37,7 @@ class TabEntity {
       isModified: isModified ?? this.isModified,
       createdAt: createdAt ?? this.createdAt,
       lastModified: lastModified ?? this.lastModified,
+      file: file ?? this.file,
     );
   }
 
