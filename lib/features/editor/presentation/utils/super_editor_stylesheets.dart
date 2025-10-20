@@ -1,6 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:super_editor/super_editor.dart';
 
+// Inline code style builder for light theme
+final inlineCodeStyleBuilder = StyleRule(BlockSelector.all, (doc, docNode) {
+  return {
+    "inlineTextStyler":
+        (Set<Attribution> attributions, TextStyle existingStyle) {
+          if (attributions.contains(codeAttribution)) {
+            return const TextStyle(
+              color: Color(0xFFD73A49), // GitHub red
+              backgroundColor: Color(0xFFFFE7E9),
+              fontFamily: 'monospace',
+            ).merge(existingStyle);
+          }
+          return existingStyle;
+        },
+  };
+});
+
+// Inline code style builder for dark theme
+final inlineCodeStyleBuilderDark = StyleRule(BlockSelector.all, (doc, docNode) {
+  return {
+    "inlineTextStyler":
+        (Set<Attribution> attributions, TextStyle existingStyle) {
+          if (attributions.contains(codeAttribution)) {
+            return TextStyle(
+              color: Colors.teal, // Teal on dark
+              backgroundColor: Colors.teal.withOpacity(0.18),
+              fontFamily: 'monospace',
+            ).merge(existingStyle);
+          }
+          return existingStyle;
+        },
+  };
+});
+
 class SuperEditorStylesheets {
   SuperEditorStylesheets._();
   static final SuperEditorStylesheets _instance = SuperEditorStylesheets._();
@@ -45,6 +79,9 @@ class SuperEditorStylesheets {
           ),
         };
       }),
+
+      // Inline code attribution styling
+      inlineCodeStyleBuilder,
 
       // Headings - larger sizes (light)
       StyleRule(const BlockSelector("header1"), (doc, docNode) {
@@ -165,6 +202,9 @@ class SuperEditorStylesheets {
           ),
         };
       }),
+
+      // Inline code attribution styling
+      inlineCodeStyleBuilderDark,
 
       // Headings - larger sizes (dark)
       StyleRule(const BlockSelector("header1"), (doc, docNode) {
