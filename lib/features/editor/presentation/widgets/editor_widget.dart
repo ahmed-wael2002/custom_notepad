@@ -30,6 +30,11 @@ class _EditorWidgetState extends State<EditorWidget> {
       stylesheet: widget.isDarkMode
           ? SuperEditorStylesheets().darkStylesheet
           : SuperEditorStylesheets().lightStylesheet,
+      shrinkWrap: true,
+      selectionStyle: SelectionStyles(
+        highlightEmptyTextBlocks: false,
+        selectionColor: Theme.of(context).colorScheme.primary,
+      ),
       plugins: {MarkdownInlineUpstreamSyntaxPlugin()},
     ));
   }

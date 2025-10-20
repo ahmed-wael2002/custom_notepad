@@ -20,224 +20,7 @@ class SuperEditorStylesheets {
           "textStyle": const TextStyle(
             color: Color(0xFF24292F), // GitHub's text color
             fontSize: 16,
-            height: 1.5,
-          ),
-        };
-      }),
-
-      // Headers with GitHub styling
-      StyleRule(const BlockSelector("header1"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF1F2328),
-            fontSize: 32,
-            fontWeight: FontWeight.w600,
-            height: 1.25,
-          ),
-          "padding": const EdgeInsets.only(bottom: 8, top: 24),
-        };
-      }),
-      StyleRule(const BlockSelector("header2"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF1F2328),
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-            height: 1.25,
-          ),
-          "padding": const EdgeInsets.only(bottom: 8, top: 16),
-        };
-      }),
-      StyleRule(const BlockSelector("header3"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF1F2328),
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            height: 1.25,
-          ),
-          "padding": const EdgeInsets.only(bottom: 8, top: 16),
-        };
-      }),
-
-      // Inline code - GitHub style
-      StyleRule(const BlockSelector("code"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF0969DA), // GitHub's code color
-            fontFamily: 'monospace',
-            fontSize: 85, // 85% of parent font size
-          ),
-          "backgroundColor": const Color(
-            0xFFF6F8FA,
-          ), // GitHub's code background
-          "padding": const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-          "decoration": BoxDecoration(
-            color: const Color(0xFFF6F8FA),
-            borderRadius: BorderRadius.circular(6),
-          ),
-        };
-      }),
-
-      // Code blocks - GitHub style
-      StyleRule(const BlockSelector("codeblock"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF24292F),
-            fontFamily: 'monospace',
-            fontSize: 14,
-            height: 1.45,
-          ),
-          "backgroundColor": const Color(0xFFF6F8FA),
-          "padding": const EdgeInsets.all(16),
-          "decoration": BoxDecoration(
-            color: const Color(0xFFF6F8FA),
-            borderRadius: BorderRadius.circular(6),
-            border: Border.all(color: const Color(0xFFD0D7DE), width: 1),
-          ),
-        };
-      }),
-
-      // Blockquotes - GitHub style
-      StyleRule(const BlockSelector("blockquote"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF656D76),
-            fontSize: 16,
-            height: 1.5,
-          ),
-          "padding": const EdgeInsets.only(left: 16, top: 0, bottom: 0),
-          "decoration": const BoxDecoration(
-            border: Border(
-              left: BorderSide(color: Color(0xFFD0D7DE), width: 4),
-            ),
-          ),
-        };
-      }),
-
-      // Links - GitHub blue
-      StyleRule(const BlockSelector("link"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF0969DA),
-            decoration: TextDecoration.underline,
-          ),
-        };
-      }),
-
-      // Lists
-      StyleRule(const BlockSelector("listItem"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF24292F),
-            fontSize: 16,
-            height: 1.5,
-          ),
-        };
-      }),
-    ],
-  );
-
-  // Dark theme - GitHub dark mode colors
-  Stylesheet get _darkStylesheet => _lightStylesheet.copyWith(
-    addRulesAfter: [
-      // Base text styling - GitHub dark theme
-      StyleRule(BlockSelector.all, (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFFF0F6FC), // GitHub's dark text color
-            fontSize: 16,
-            height: 1.5,
-          ),
-        };
-      }),
-
-      // Headers with GitHub dark styling
-      StyleRule(const BlockSelector("header1"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFFF0F6FC),
-            fontSize: 32,
-            fontWeight: FontWeight.w600,
-            height: 1.25,
-          ),
-          "padding": const EdgeInsets.only(bottom: 8, top: 24),
-        };
-      }),
-      StyleRule(const BlockSelector("header2"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFFF0F6FC),
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-            height: 1.25,
-          ),
-          "padding": const EdgeInsets.only(bottom: 8, top: 16),
-        };
-      }),
-      StyleRule(const BlockSelector("header3"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFFF0F6FC),
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            height: 1.25,
-          ),
-          "padding": const EdgeInsets.only(bottom: 8, top: 16),
-        };
-      }),
-
-      // Inline code - GitHub dark style
-      StyleRule(const BlockSelector("code"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF7DD3FC), // GitHub's dark code color
-            fontFamily: 'monospace',
-            fontSize: 85, // 85% of parent font size
-          ),
-          "backgroundColor": const Color(
-            0xFF161B22,
-          ), // GitHub's dark code background
-          "padding": const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-          "decoration": BoxDecoration(
-            color: const Color(0xFF161B22),
-            borderRadius: BorderRadius.circular(6),
-          ),
-        };
-      }),
-
-      // Code blocks - GitHub dark style
-      StyleRule(const BlockSelector("codeblock"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFFF0F6FC),
-            fontFamily: 'monospace',
-            fontSize: 14,
-            height: 1.45,
-          ),
-          "backgroundColor": const Color(0xFF0D1117),
-          "padding": const EdgeInsets.all(16),
-          "decoration": BoxDecoration(
-            color: const Color(0xFF0D1117),
-            borderRadius: BorderRadius.circular(6),
-            border: Border.all(color: const Color(0xFF30363D), width: 1),
-          ),
-        };
-      }),
-
-      // Blockquotes - GitHub dark style
-      StyleRule(const BlockSelector("blockquote"), (doc, docNode) {
-        return {
-          "textStyle": const TextStyle(
-            color: Color(0xFF8B949E),
-            fontSize: 16,
-            height: 1.5,
-          ),
-          "padding": const EdgeInsets.only(left: 16, top: 0, bottom: 0),
-          "decoration": const BoxDecoration(
-            border: Border(
-              left: BorderSide(color: Color(0xFF30363D), width: 4),
-            ),
+            // height: 1.5,
           ),
         };
       }),
@@ -252,14 +35,197 @@ class SuperEditorStylesheets {
         };
       }),
 
+      // Inline code (e.g., `code`)
+      StyleRule(const BlockSelector("code"), (doc, docNode) {
+        return {
+          "textStyle": TextStyle(
+            color: const Color(0xFFD73A49), // GitHub red
+            backgroundColor: const Color(0xFFD73A49).withOpacity(0.12),
+            fontFamily: 'monospace',
+          ),
+        };
+      }),
+
+      // Headings - larger sizes (light)
+      StyleRule(const BlockSelector("header1"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFF24292F),
+            fontSize: 34,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header2"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFF24292F),
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header3"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFF24292F),
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header4"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFF24292F),
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header5"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFF24292F),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header6"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFF24292F),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+
       // Lists
       StyleRule(const BlockSelector("listItem"), (doc, docNode) {
         return {
           "textStyle": const TextStyle(
             color: Color(0xFFF0F6FC),
             fontSize: 16,
-            height: 1.5,
+            // height: 1.5,
           ),
+        };
+      }),
+
+      // Bold text
+      StyleRule(const BlockSelector("bold"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+
+      // Italic text
+      StyleRule(const BlockSelector("italic"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontStyle: FontStyle.italic,
+          ),
+        };
+      }),
+    ],
+  );
+
+  // Dark theme - GitHub dark colors
+  Stylesheet get _darkStylesheet => defaultStylesheet.copyWith(
+    addRulesAfter: [
+      // Base text styling
+      StyleRule(BlockSelector.all, (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(color: Color(0xFFF0F6FC), fontSize: 16),
+        };
+      }),
+
+      // Links - GitHub dark blue
+      StyleRule(const BlockSelector("link"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFF58A6FF),
+            decoration: TextDecoration.underline,
+          ),
+        };
+      }),
+
+      // Inline code (e.g., `code`)
+      StyleRule(const BlockSelector("code"), (doc, docNode) {
+        return {
+          "textStyle": TextStyle(
+            color: Colors.teal, // Softer red on dark
+            backgroundColor: Colors.teal.withOpacity(0.18),
+            fontFamily: 'monospace',
+          ),
+        };
+      }),
+
+      // Headings - larger sizes (dark)
+      StyleRule(const BlockSelector("header1"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontSize: 34,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header2"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header3"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header4"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header5"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+      StyleRule(const BlockSelector("header6"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(
+            color: Color(0xFFF0F6FC),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        };
+      }),
+
+      // Lists
+      StyleRule(const BlockSelector("listItem"), (doc, docNode) {
+        return {
+          "textStyle": const TextStyle(color: Color(0xFFF0F6FC), fontSize: 16),
         };
       }),
 

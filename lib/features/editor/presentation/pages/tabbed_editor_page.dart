@@ -41,6 +41,9 @@ class _TabbedEditorPageState extends State<TabbedEditorPage> {
                     stylesheet: isDarkMode
                         ? SuperEditorStylesheets().darkStylesheet
                         : SuperEditorStylesheets().lightStylesheet,
+                    selectionStyle: SelectionStyles(
+                      selectionColor: Theme.of(context).colorScheme.primary,
+                    ),
                     plugins: {MarkdownInlineUpstreamSyntaxPlugin()},
                   );
                 },
